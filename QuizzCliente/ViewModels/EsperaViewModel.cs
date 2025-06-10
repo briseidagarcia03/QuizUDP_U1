@@ -42,7 +42,7 @@ namespace QuizzCliente.ViewModels
 
         private void QuizzService_NotificacionRecibida(object? sender, string e)
         {
-            if (e == "IniciarJuego")
+            if (e == "IniciarJuego" || e == "ReiniciarJuego")
             {
                 Unirse = true;
                 Mensaje = "";
