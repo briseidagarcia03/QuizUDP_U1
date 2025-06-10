@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="QuizzServidor.Views.ResultadosFinalesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuizzServidor.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="#F4F4F4" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Lista de Participantes -->
+        <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="10" Margin="10" BorderBrush="#3498DB" BorderThickness="2">
+            <StackPanel>
+                <TextBlock Text="Participantes" FontSize="20" FontWeight="Bold" Foreground="#333" Margin="5" TextAlignment="Center"/>
+                <ListView ItemsSource="{Binding TopUsuarios}" Height="550">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nombre" Width="150" DisplayMemberBinding="{Binding Nombre}"/>
+                            <GridViewColumn Header="Aciertos" Width="80" DisplayMemberBinding="{Binding Aciertos}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Center">
+            <TextBlock Text="Porcentaje de aciertos" FontSize="20" FontWeight="Bold" Foreground="#333" Margin="5" TextAlignment="Center"/>
+
+            <!-- % de Aciertos -->
+            <Border Background="White" CornerRadius="10" Padding="15" Margin="5" BorderBrush="#2ECC71" BorderThickness="2">
+                <Label HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="#2ECC71">
+                    <TextBlock> 
+                        <Run Text="{Binding PorcentajeAciertos}"/> 
+                        <Run Text="%"/>
+                    </TextBlock>
+                </Label>
+            </Border>
+
+            <Border CornerRadius="20" Background="#E74C4C" Width="170" Margin="5" Height="44">
+                <Button Content="TERMINAR" Height="30" FontSize="18" FontWeight="Bold" 
+          Background="#E74C3C" Foreground="White" BorderThickness="0"
+           HorizontalAlignment="Center" Width="160" Cursor="Hand"
+           Command="{Binding FinalizarCommand}"/>
+
+            </Border>
+            <Label HorizontalAlignment="Center">Terminar comenzará un nuevo quiz</Label>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
